@@ -1,0 +1,266 @@
+*{
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background-color: black;
+    color: #fff;
+}
+
+.header{
+    position: fixed;
+    background: #03426f;
+    left: 0;
+    top:0;
+    padding: 5px 5%;
+    width: 100%;
+    z-index: 100;
+    transition: 0.6s ease-in-out;
+}
+.nav-hidden{
+    transform: translateY(-150px);
+    transition: 0.6s ease-in-out;
+ }
+
+span{
+    color: #0ef;
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.logo{
+    color: #fff;
+    font-size: 35px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    opacity: 0;
+    animation: slideright 1.5s ease forwards;   
+}
+
+.nav-links{
+    display: inline-block;
+    margin:  30px;
+    animation: slidetop 1s ease forwards;
+    animation-delay: calc(.2s*var(--1));
+    opacity: 0;
+}
+@keyframes slidetop {
+    0%{
+        transform: translateY(100px);
+        opacity: 0;
+    }
+    100%{
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+.linkk{
+    color: #fff;
+    font-size: 20px;
+    position: relative;
+}
+
+.linkk::after{
+    content: "";
+    width:0;
+    position: absolute;
+    left: 0;
+    background: #0ef;
+    height: 5px;
+    border-radius: 10px;
+    bottom: -6px;
+    transition: 0.7s;
+}
+
+.linkk:hover::after{
+    width: 100%;
+}
+
+@keyframes slideright {
+    0%{
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+    100%{
+        transform: translateX(0px);
+        opacity: 1;
+    }
+
+}
+.togg{
+   display: none;
+}
+@media (max-width:950px){
+    .navbar i{
+        display: block;
+        font-size: 25px;
+        z-index: 10000;
+        cursor: pointer;
+    }
+    .togg{
+        animation: slidetop 1s ease forwards;
+    }
+    .menu{
+        background: #03426f;
+        position: fixed;
+        top: 0px;
+        right:-100%;
+        width: 100%;
+        z-index: 1000;
+        height: 100%;
+        padding-top: 50px;
+        transition: 0.5s;
+        text-align: center;
+        z-index: 1000;
+        
+    }
+    .nav-links{
+        display: block;
+        margin: 25px;
+    }
+    .linkssss{
+        margin-top: 10%;
+    }
+   
+}
+.music-home{
+    width: 100%;
+    justify-content: center;
+    margin: 5% auto 5% auto;
+    display: flex;
+    align-items:center ;
+    padding: 100px 5%;
+
+}
+
+.container{
+    width: 100%;
+    padding:auto 5% ;
+}
+.container h1{
+    margin-bottom: 5%;
+    font-size: 50px;
+}
+
+.music-box{
+    width: 70%;
+    background: #000000;
+    padding: 5%;
+    border-radius: 20px;
+    box-shadow: 0 3px 25px cyan,
+    0 0 30px red;
+    position: relative;
+}
+
+.music-box .row{
+    display: flex;
+    margin-bottom: 5%;
+    
+}
+
+.row i{
+    cursor: pointer;
+    transition: 0.5s all;
+}
+
+.row i:hover{
+    color: aqua;
+    transform: scale(1.2);
+}
+
+.image{
+    border-radius: 50%;
+    overflow: hidden;
+    width: 200px;
+    height: 200px;
+    box-shadow:0 0 25px 15px rgb(163, 10, 10);
+    margin-bottom: 7%;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+.image-box{
+    animation: imagedance 2s infinite ;
+}
+@keyframes imagedance {
+    10% {
+        box-shadow: 0 0 15px 10px #32ff1f;
+    }
+    35% {
+        box-shadow: 0 0 15px 10px rgb(182, 12, 9);
+    }
+    50% {
+        box-shadow: 0 0 15px 10px #06038D;
+    }
+    
+    65% {
+        box-shadow: 0 0 15px 10px rgb(9, 116, 130);
+    }
+    80% {
+        box-shadow: 0 0 15px 10px #046A38;
+    }
+}
+.image img{
+    object-fit: cover;
+    height: 100%;
+    width: 100%;  
+    
+    transition: all 0.5s;
+}
+
+.song-t{
+    margin-bottom: 2%;
+}
+.song-t h2{
+    letter-spacing: 3px;
+    text-shadow:0 0 25px #0ef;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 5%;
+
+}
+
+.controls i{
+    font-size:5rem;
+    cursor: pointer;
+    color: aqua;
+    transition: 0.5s ease;
+}
+
+.controls i:hover{
+    color: rgb(6, 220, 20);
+}
+
+.more-controls{
+    display: flex;
+    justify-content:space-evenly;
+    align-items: center;
+    gap: 3rem;
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    width: 100%;
+}
+
+.more-controls i{
+    font-size: 25px;
+    color: #6d6d6d;
+    cursor: pointer;
+}
+
+.more-controls i:hover{
+    color: #fff;
+}
