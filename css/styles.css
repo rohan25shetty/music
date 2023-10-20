@@ -264,3 +264,18 @@ nav{
 .more-controls i:hover{
     color: #fff;
 }
+
+@media (max-width:540px){
+    .music-home{
+        padding: 100px 0;
+    }
+    .container h1{
+        font-size: 30px;
+    }
+    .song-t h2{
+        margin-top: 15%;
+    }
+    .controls {
+        margin:5% auto 10% auto ;
+    }
+}
