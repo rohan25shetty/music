@@ -29,7 +29,10 @@ window.addEventListener("scroll",function(){
 
 var box=document.getElementById("disco");
 function boxdance() {
-    box.classList.toggle("image-box")
+    box.classList.add("image-box");
+}
+function boxdanceend(){
+    box.classList.remove("image-box");
 }
 //< -----------------MUSIC CONTROL------------------------------>
 
@@ -108,19 +111,16 @@ const play=document.getElementById("play"),
 prevbtn=document.getElementById("prev"),
 nextbtn=document.getElementById("next");
 
-play.addEventListener("click",()=>{
-    if(playing){
-        play.classList.replace("bx-pause" ,"bx-play");
-        playing=false;
-        audio.pause();
-    }
-    else{
-        play.classList.replace("bx-play" ,"bx-pause");
-        playing=true;
-        audio.play();
-    }
-});
-
+function playyyy(){
+    audio.play();
+    play.setAttribute("class","bx bx-pause");
+    play.setAttribute("onclick","boxdanceend();pausee()");
+}
+function pausee(){
+    audio.pause();
+    play.setAttribute("class","bx bx-play");
+    play.setAttribute("onclick","boxdance();playyyy()");
+}
 
 function nextsong(){
     if(currentsong < songs.length-1){
@@ -130,9 +130,8 @@ function nextsong(){
         currentsong = 0;
     }
     loadsong(currentsong);
-    if(playing){
-        audio.play();
-    }
+    playyyy();
+    boxdance();
 }
 
 nextbtn.addEventListener("click",nextsong);
@@ -146,9 +145,8 @@ function prevsong(){
     }
     loadsong(currentsong);
 
-    if(playing){
-        audio.play();
-    }
+    playyyy();
+    boxdance();
 }
  
 prevbtn.addEventListener("click",prevsong)
