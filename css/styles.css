@@ -225,6 +225,41 @@ nav{
     text-shadow:0 0 25px #0ef;
 }
 
+.pro-bar{
+    position: relative;
+    width: 100%;
+    height: 5px;
+    background-color: #0e0a8c;
+    margin: 5% auto;
+    cursor: pointer;
+    border-radius: 30px;
+}
+
+.pro-bar .dot{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #0ef;
+    position: absolute;
+    top:-3px;
+    left: 0;
+    user-select: none;
+    pointer-events: none;
+    transition: all 0.3s;
+}
+
+.pro-bar .time{
+    width: 100%;
+    position: absolute;
+    top:-25px;
+    user-select: none;
+    font-size: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s;
+}
+
 .controls {
     display: flex;
     justify-content: space-evenly;
@@ -261,10 +296,11 @@ nav{
     cursor: pointer;
 }
 
-.more-controls i:hover{
+
+
+.more-controls .active{
     color: #fff;
 }
-
 @media (max-width:540px){
     .music-home{
         padding: 100px 0;
