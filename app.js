@@ -89,13 +89,18 @@ const songs=[
         img_src:"images/img8.jpg",
         src:"music/sterio.mp3",
     },
-]
+];
+
+
+
 
 
 
 // add songs
+
 var songname=document.getElementById("s-title");
-var coverimg=document.getElementById("random")
+var coverimg=document.getElementById("random");
+audio=new Audio(`${songs[0].src}`)
 
 function loadsong(num){
     songname.innerHTML=`${songs[num].title}`;
@@ -145,4 +150,4 @@ function prevsong(){
     boxdance();
 }
  
-prevbtn.addEventListener("click",prevsong)
+prevbtn.addEventListener("click",prevsong);
