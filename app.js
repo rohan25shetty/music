@@ -39,7 +39,7 @@ function boxdanceend(){
 
 
 
-let repeat=false,
+let repeat=0,
 currentsong=0,
 playing=false,
 shuffel=false,
@@ -100,12 +100,12 @@ const songs=[
 
 var songname=document.getElementById("s-title");
 var coverimg=document.getElementById("random");
-audio=new Audio(`${songs[0].src}`)
+audio=new Audio(`${songs[0].src}`);
 
 function loadsong(num){
     songname.innerHTML=`${songs[num].title}`;
     coverimg.src=`${songs[num].img_src}`;
-    audio.src=`${songs[num].src}`
+    audio.src=`${songs[num].src}`;
 }
 
 const play=document.getElementById("play"),
@@ -124,7 +124,13 @@ function pausee(){
 }
 
 function nextsong(){
-    if(currentsong < songs.length-1){
+
+    if(shuffel){
+        shuffelfunc();
+        loadsong(currentsong);
+        playyyy();
+    }
+    else if(currentsong < songs.length-1){
         currentsong++;
     }
     else{
@@ -138,7 +144,12 @@ function nextsong(){
 nextbtn.addEventListener("click",nextsong);
 
 function prevsong(){
-    if(currentsong > 0){
+    if(shuffel){
+        shuffelfunc();
+        loadsong(currentsong);
+        playyyy();
+    }
+    else if(currentsong > 0){
         currentsong--;
     }
     else{
@@ -151,3 +162,102 @@ function prevsong(){
 }
  
 prevbtn.addEventListener("click",prevsong);
+
+
+//shuffle 
+const shufflebtn=document.getElementById("shuff");
+function shufflesongs(){
+    shuffel =!shuffel;
+    shufflebtn.classList.toggle("active");
+}
+
+shufflebtn.addEventListener("click",shufflesongs);
+
+function shuffelfunc(){
+    if(shuffel){
+        currentsong=Math.floor(Math.random()*songs.length);
+    }
+    
+}
+
+
+//repeat functionality
+const repeatbtn=document.getElementById("repeat")
+
+function repeatsong(){
+    if(repeat===0){
+        repeat=1;
+        repeatbtn.classList.add("active")
+    }
+    else if(repeat===1){
+        repeat=2;
+        repeatbtn.classList.add("active");
+    }
+    else{
+        repeat=0;
+        repeatbtn.classList.remove("active");
+    }
+}
+
+repeatbtn.addEventListener("click",repeatsong)
+
+audio.addEventListener("ended",()=>{
+    if(repeat===1){
+        playyyy();
+    }
+    else if(repeat===2){
+        nextsong();
+    }
+    else{
+        if(currentsong===songs.length-1){
+            pausee();
+        }else{
+            nextsong();
+        }
+    }
+});
+
+
+
+//progresss bar
+const progressbar=document.getElementById("pro-barr"),
+    progressdot=document.querySelector(".dot"),
+    currenttimeel=document.querySelector(".current-time"),
+    timeelapsed=document.querySelector(".duration");
+
+   
+
+    function formatTime(time){
+        let minutes=Math.floor(time/60);
+        let seconds=Math.floor(time%60);
+        seconds=seconds<10?`0${seconds}`:seconds;
+        return `${minutes}:${seconds}`;
+    }
+
+    function progress(){
+        let {duration,currentTime}=audio;
+
+        isNaN(duration)?(duration=0):duration;
+        isNaN(currentTime)?(currentTime=0):currentTime;
+        currenttimeel.innerHTML=formatTime(currentTime);
+        timeelapsed.innerHTML=formatTime(duration);
+
+        let progressper=(currentTime/duration)*100;
+        progressdot.style.left=`${progressper}%`
+    }
+
+    audio.addEventListener("timeupdate",progress);
+
+    function setprogress(e){
+        let width=this.clientWidth;
+        let clickX=e.offsetX;
+        let duration=audio.duration;
+        audio.currentTime=(clickX/width)*duration;
+        playyyy();
+        boxdance();
+
+    }
+
+    progressbar.addEventListener("click",setprogress);
+
+   
