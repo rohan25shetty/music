@@ -42,7 +42,7 @@
       <center>
         <div class="music-box">
           <div class="row">
-            <i class="fa-solid fa-bars music-menu " id="bar"></i>
+            <!-- <i class="fa-solid fa-bars music-menu " id="bar"></i> -->
           </div>
           <div class="image" id="disco">
             <img  id="random" class="random"  src="images/img.1.jpeg" alt="">
@@ -50,14 +50,21 @@
           <div class="song-t">
             <h2 id="s-title">ON MY WAY</h2>
           </div>
+          <div class="pro-bar" id="pro-barr">
+            <div class="dot"></div>
+              <div class="time">
+                <h5 class="current-time">0:00</h5>
+                <h5 class="duration">0:00</h5>
+              </div>
+          </div>
           <div class="controls">
             <i class='bx bx-skip-previous' id="prev"></i>
             <i class='bx bx-play' id="play" onclick="playyyy();boxdance()"></i>
             <i class='bx bx-skip-next' id="next" "></i>
           </div>
           <div class="more-controls">
-            <i class='bx bx-repeat'></i>
-            <i class='bx bx-shuffle'></i>
+            <i class='bx bx-repeat' id="repeat"></i>
+            <i class='bx bx-shuffle' id="shuff"></i>
           </div>
          
         </div>
