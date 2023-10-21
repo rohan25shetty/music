@@ -94,10 +94,6 @@ const songs=[
 
 
 // add songs
-function init(){
-    loadsong(currentsong);
-}
-
 var songname=document.getElementById("s-title");
 var coverimg=document.getElementById("random")
 
