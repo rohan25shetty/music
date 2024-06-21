@@ -100,6 +100,9 @@ nav{
 .togg{
    display: none;
 }
+
+
+
 @media (max-width:950px){
     .navbar i{
         display: block;
@@ -301,6 +304,10 @@ nav{
 .more-controls .active{
     color: #fff;
 }
+
+
+
+
 @media (max-width:540px){
     .music-home{
         padding: 100px 0;
