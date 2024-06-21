@@ -26,6 +26,7 @@ window.addEventListener("scroll",function(){
     lastscrollY=window.scrollY;
 })
 
+// music logo lighting
 
 var box=document.getElementById("disco");
 function boxdance() {
